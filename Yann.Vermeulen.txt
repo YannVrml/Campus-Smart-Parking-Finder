@@ -1,0 +1,7 @@
+Individual Reflection — Yann Vermeulen
+
+In this project, I primarily worked on the client/server communication and experimental validation. I participated in implementing the concurrent server (handling multiple TCP connections in parallel), the minimal RPC layer (request/response with length-prefix framing), and load testing scripts to measure throughput and latency over 30 seconds with 1/4/8/16 workers.
+
+A bug I fixed concerned the main entry point: after switching to a more "classical" launch (without package), `main.py` could no longer find certain modules (`ModuleNotFoundError`). I corrected the import path to allow clean execution via `python main.py --config config.json`.
+
+An important design change I proposed was to keep a separate events channel from the RPC stream, with a bounded queue per subscriber and "drop oldest" back-pressure policy. This choice prevents a slow subscriber from blocking normal RPC requests, and it aligns with the results observed during testing (AVAIL stability under sensor load and measurable activation of the back-pressure policy).
