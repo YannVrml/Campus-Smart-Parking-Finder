@@ -37,6 +37,12 @@ pip install -r requirements.txt
 
 This project is **stdlib only**.
 
+## Compatibility
+
+- Tested with Python **3.13.5** in a virtual environment.
+- Recommended minimum version: Python **3.10+**.
+- If `python` is not Python 3 on your machine, use `python3` in the same commands.
+
 ## Run
 
 Start server:
